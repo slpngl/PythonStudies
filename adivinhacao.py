@@ -7,19 +7,24 @@ numero_secreto = 42
 total_de_tentativas = 3
 rodada = 1
 
-while (rodada <= total_de_tentativas):
+# while (rodada <= total_de_tentativas):
+for rodada in range(1, total_de_tentativas + 1):  # +1 pq o último número do range é excludente . então no caso seria algo como
+    # menor que - 1 até menor que total de tentativas.
+
     print("Essa é sua", rodada, "rodada")
 
     print("Tentativa {} de {}".format(rodada, total_de_tentativas))
     # String interpolation
 
-    chute = input("Digite seu número")
+    chute = input("Digite um número entre 1 e 100")
 
-    print("Você digitou", chute)
+    chutado = int(chute) # Necessário fazer a conversão pois  o input vem com string
 
-    chutado = int(chute)
+    print("Você digitou", chutado)
 
-    # Necessário fazer a conversão pois  o input vem com string
+    if (chutado < 1 or chutado > 100):
+        print("Você deve digitar um número entre 1 e 100!")
+        continue
 
     acertou = numero_secreto == chutado
     maior = chutado > numero_secreto
@@ -27,6 +32,7 @@ while (rodada <= total_de_tentativas):
 
     if (acertou):
         print("Você acertou")
+        break
     else:
         if (maior):
             print("você errou, o número secreto é mais baixo")
@@ -36,3 +42,8 @@ while (rodada <= total_de_tentativas):
     rodada = rodada + 1
 
 print("FIM DO JOGO")
+
+
+
+
+
